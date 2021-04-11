@@ -4,8 +4,9 @@
     <select id="getById" parameterType="int" resultType="com.example.accounts.bean.LabelBean">
         SELECT * FROM label WHERE id = #{id}
     </select>
-    <insert id="insert" parameterType="com.example.accounts.bean.LabelBean">
-        INSERT INTO label(user_id, name, is_favorite) VALUES (#{userId}, #{name}, #{isFavorite})
+    <insert id="insert" parameterType="com.example.accounts.bean.LabelBean"
+            useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO label(id, user_id, name, is_favorite) VALUES (#{id}, #{userId}, #{name}, #{isFavorite})
     </insert>
     <update id="update" parameterType="com.example.accounts.bean.LabelBean">
         UPDATE label set user_id = #{userId}, name = #{name}, is_favorite = #{isFavorite} where id = #{id}

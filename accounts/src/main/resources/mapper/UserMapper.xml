@@ -4,8 +4,10 @@
     <select id="getByName" parameterType="String" resultType="com.example.accounts.bean.UserBean">
         SELECT * FROM user WHERE name = #{name}
     </select>
-    <insert id="insert" parameterType="com.example.accounts.bean.UserBean">
-        INSERT INTO user(name, password, budget_for_month) VALUES (#{name}, #{password}, #{budgetForMonth})
+    <insert id="insert" parameterType="com.example.accounts.bean.UserBean"
+            useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO user(id, name, password, budget_for_month)
+         VALUES (#{id}, #{name}, #{password}, #{budgetForMonth})
     </insert>
     <update id="update" parameterType="com.example.accounts.bean.UserBean">
         UPDATE user set name = #{name}, password = #{password}, budget_for_month = #{budgetForMonth} where id = #{id}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.accounts.mapper.BookUserMapper">
+    <insert id="insert" parameterType="com.example.accounts.bean.BookUserBean">
+        INSERT INTO book_user(book_id, user_id, is_owner) VALUES (#{bookId}, #{userId}, #{isOwner})
+    </insert>
+</mapper>

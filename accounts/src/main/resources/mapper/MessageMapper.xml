@@ -4,8 +4,9 @@
     <select id="getById" parameterType="int" resultType="com.example.accounts.bean.MessageBean">
         SELECT * FROM message WHERE id = #{id}
     </select>
-    <insert id="insert" parameterType="com.example.accounts.bean.MessageBean">
-        INSERT INTO message(from, to, type) VALUES (#{from}, #{to}, #{type})
+    <insert id="insert" parameterType="com.example.accounts.bean.MessageBean"
+            useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO message(id, from, to, type) VALUES (#{id}, #{from}, #{to}, #{type})
     </insert>
     <update id="update" parameterType="com.example.accounts.bean.MessageBean">
         UPDATE message set from = #{from}, to = #{to}, type = #{type} where id = #{id}

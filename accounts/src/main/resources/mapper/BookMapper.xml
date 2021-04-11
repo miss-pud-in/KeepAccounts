@@ -4,8 +4,10 @@
     <select id="getById" parameterType="int" resultType="com.example.accounts.bean.BookBean">
         SELECT * FROM book WHERE id = #{id}
     </select>
-    <insert id="insert" parameterType="com.example.accounts.bean.BookBean">
-        INSERT INTO book(name, is_private, is_deletable, is_lock, password) VALUES (#{name}, #{isPrivate}, #{isDeletable}, #{isLock}, #{password})
+    <insert id="insert" parameterType="com.example.accounts.bean.BookBean"
+            useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO book(id, name, is_private, is_deletable, is_lock, password)
+         VALUES (#{id}, #{name}, #{isPrivate}, #{isDeletable}, #{isLock}, #{password})
     </insert>
     <update id="update" parameterType="com.example.accounts.bean.BookBean">
         UPDATE book set name = #{name}, is_private = #{isPrivate}, is_deletable = #{isDeletable}, is_lock = #{isLock}, password = #{password} where id = #{id}

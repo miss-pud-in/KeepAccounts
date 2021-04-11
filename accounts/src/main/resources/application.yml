@@ -1,0 +1,24 @@
+
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/accountsdb?useUnicode=true&characterEncoding=utf-8&useSSL=false #url
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  spring:
+    #动态刷新
+    thymeleaf:
+      cache: false
+      encoding: UTF-8
+      mode: LEGACYHTML5
+      prefix: classpath:/templates/
+      suffix: .html
+      check-template-location: true
+  devtools:
+    restart:
+      enabled: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.accounts.bean

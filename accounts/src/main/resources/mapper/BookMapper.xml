@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.accounts.mapper.BookMapper">
+    <select id="getById" parameterType="int" resultType="com.example.accounts.bean.BookBean">
+        SELECT * FROM book WHERE id = #{id}
+    </select>
+    <insert id="insert" parameterType="com.example.accounts.bean.BookBean">
+        INSERT INTO book(name, is_private, is_deletable, is_lock, password) VALUES (#{name}, #{isPrivate}, #{isDeletable}, #{isLock}, #{password})
+    </insert>
+    <update id="update" parameterType="com.example.accounts.bean.BookBean">
+        UPDATE book set name = #{name}, is_private = #{isPrivate}, is_deletable = #{isDeletable}, is_lock = #{isLock}, password = #{password} where id = #{id}
+    </update>
+</mapper>

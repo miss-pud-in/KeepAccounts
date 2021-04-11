@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.accounts.mapper.LabelMapper">
+    <select id="getById" parameterType="int" resultType="com.example.accounts.bean.LabelBean">
+        SELECT * FROM label WHERE id = #{id}
+    </select>
+    <insert id="insert" parameterType="com.example.accounts.bean.LabelBean">
+        INSERT INTO label(user_id, name, is_favorite) VALUES (#{userId}, #{name}, #{isFavorite})
+    </insert>
+    <update id="update" parameterType="com.example.accounts.bean.LabelBean">
+        UPDATE label set user_id = #{userId}, name = #{name}, is_favorite = #{isFavorite} where id = #{id}
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE FROM label WHERE id = #{id}
+    </delete>
+</mapper>

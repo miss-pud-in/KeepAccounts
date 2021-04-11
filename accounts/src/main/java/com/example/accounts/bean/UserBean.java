@@ -31,4 +31,5 @@ public class UserBean {
         if(budgetForMonth >= 0)
             this.budgetForMonth = budgetForMonth;
     }
+
 }

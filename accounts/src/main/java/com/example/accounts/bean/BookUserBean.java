@@ -21,4 +21,5 @@ public class BookUserBean {
         this.userId = userId;
     }
     public void setIsOwner(int isOwner) { this.isOwner = isOwner; }
+
 }

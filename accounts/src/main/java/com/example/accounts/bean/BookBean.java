@@ -39,4 +39,5 @@ public class BookBean {
         this.password = password;
     }
     public void setIsDeletable(int isDeletable) { this.isDeletable = isDeletable; }
+
 }

@@ -20,9 +20,7 @@ public class MessageBean {
         return type;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id) { this.id = id; }
     public void setFrom(int from) {
         this.from = from;
     }
@@ -32,4 +30,5 @@ public class MessageBean {
     public void setType(int type) {
         this.type = type;
     }
+
 }

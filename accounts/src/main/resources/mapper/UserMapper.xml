@@ -10,4 +10,7 @@
     <update id="update" parameterType="com.example.accounts.bean.UserBean">
         UPDATE user set name = #{name}, password = #{password}, budget_for_month = #{budgetForMonth} where id = #{id}
     </update>
+    <delete id="delete" parameterType="int">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
 </mapper>

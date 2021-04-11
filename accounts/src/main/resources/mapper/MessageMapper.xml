@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.accounts.mapper.MessageMapper">
+    <select id="getById" parameterType="int" resultType="com.example.accounts.bean.MessageBean">
+        SELECT * FROM message WHERE id = #{id}
+    </select>
+    <insert id="insert" parameterType="com.example.accounts.bean.MessageBean">
+        INSERT INTO message(from, to, type) VALUES (#{from}, #{to}, #{type})
+    </insert>
+    <update id="update" parameterType="com.example.accounts.bean.MessageBean">
+        UPDATE message set from = #{from}, to = #{to}, type = #{type} where id = #{id}
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE FROM message WHERE id = #{id}
+    </delete>
+</mapper>

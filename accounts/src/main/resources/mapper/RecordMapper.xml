@@ -10,4 +10,7 @@
     <update id="update" parameterType="com.example.accounts.bean.RecordBean">
         UPDATE record set amount = #{amount}, date = #{date}, label_id = #{labelId}, remarks = #{remarks} where id = #{id}
     </update>
+    <delete id="delete" parameterType="int">
+        DELETE FROM record WHERE id = #{id}
+    </delete>
 </mapper>

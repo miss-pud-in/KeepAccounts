@@ -32,4 +32,5 @@ public class LabelBean {
     public void setIsFavorite(int isFavorite) {
         this.isFavorite = isFavorite;
     }
+
 }

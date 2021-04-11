@@ -24,9 +24,7 @@ public class RecordBean {
         return remarks;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id) { this.id = id; }
     public void setAmount(double amount) {
         this.amount = amount;
     }
@@ -39,4 +37,5 @@ public class RecordBean {
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
+
 }

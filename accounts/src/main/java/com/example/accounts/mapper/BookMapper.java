@@ -8,4 +8,5 @@ public interface BookMapper {
     void insert(BookBean bookBean);
     void update(BookBean bookBean);
     void delete(int id);
+
 }

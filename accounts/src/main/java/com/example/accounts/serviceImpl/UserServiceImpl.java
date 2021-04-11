@@ -2,6 +2,8 @@ package com.example.accounts.serviceImpl;
 
 import com.example.accounts.bean.UserBean;
 import com.example.accounts.mapper.UserMapper;
+import com.example.accounts.service.BookService;
+import com.example.accounts.service.LabelService;
 import com.example.accounts.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,10 @@ public class UserServiceImpl implements UserService {
     //将DAO注入Service层
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private BookService bookService;
+    @Autowired
+    private LabelService labelService;
 
     @Override
     public String login(String name, String password) {
@@ -34,10 +40,15 @@ public class UserServiceImpl implements UserService {
             return "0";  // 用户名已存在
         }
         else {
+            /* 添加用户 */
             userBean = new UserBean();
             userBean.setName(name);
             userBean.setPassword(password);
             userMapper.insert(userBean);
+            /* 为新用户添加当月账本 */
+            bookService.addNewBook(userBean.getId(), null, true);
+            /* 为新用户添加默认标签 */
+            labelService.addNewLabel(userBean.getId(), "无");
             return "1";  // 注册成功
         }
     }
@@ -46,4 +57,5 @@ public class UserServiceImpl implements UserService {
     public UserBean getInfo(String name) {
         return userMapper.getByName(name);
     }
+
 }

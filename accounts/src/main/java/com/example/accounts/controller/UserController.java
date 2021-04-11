@@ -37,4 +37,5 @@ public class UserController {
         HttpHeaders responseHeaders = new HttpHeaders();
         return new ResponseEntity<String>(statusCode, responseHeaders, HttpStatus.OK);
     }
+
 }

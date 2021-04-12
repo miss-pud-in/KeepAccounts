@@ -1,0 +1,21 @@
+body{
+  margin:0;
+  padding-top:10px;
+  background:rgb(255, 243, 243);
+  text-align: center;
+}
+#mainapp{
+    position: absolute;
+    left:250px;
+    top: 35px;
+    width: 1000px;
+    height: 600px;
+    overflow-y: auto; /* 当内容过多时y轴出现滚动条 */
+    border:0px solid rgb(255, 253, 253);
+    border-radius:5px;
+    /*background:#fff2ef;*/
+    background:#fff2ef;
+      border: 10px solid rgba(255,255,255,.5);
+
+      background-clip: padding-box;
+  }

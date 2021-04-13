@@ -18,6 +18,8 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookMapper bookMapper;
     @Autowired
+    private BookService bookService;
+    @Autowired
     private BookUserService bookUserService;
 
     @Override
@@ -36,10 +38,26 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void addNewBook(int userId, BookBean bookBean) {
+    public BookBean addNewBook(int userId, BookBean bookBean) {
+        if (ifBookExists(userId, bookBean.getName()) != null)
+            return null;
         bookMapper.insert(bookBean);
         BookUserBean bookUserBean = new BookUserBean(bookBean.getId(), userId, 1);
         bookUserService.addNewRelation(bookUserBean);
+        return bookBean;
+    }
+
+    @Override
+    public BookBean ifBookExists(int userId, String name) {
+        BookBean bookBean;
+        List<BookUserBean> bookUserBeanList = bookUserService.getByOwnerId(userId);
+        for (BookUserBean bean : bookUserBeanList) {      //在用户现有的账本中查找月账本
+            bookBean = bookService.getBookById(bean.getBookId());
+            if (bookBean.getName().equals(name)) {
+                return bookBean;
+            }
+        }
+        return null;
     }
 
 }

@@ -8,6 +8,7 @@ public class BookBean {
     private int isLock = 0;
     private String password;
     private int isDeletable = 0;
+    private String description;
 
     public int getId() {
         return id;
@@ -25,6 +26,7 @@ public class BookBean {
         return password;
     }
     public int getIsDeletable() { return isDeletable; }
+    public String getDescription() { return description; }
 
     public void setName(String name) {
         this.name = name;
@@ -39,5 +41,6 @@ public class BookBean {
         this.password = password;
     }
     public void setIsDeletable(int isDeletable) { this.isDeletable = isDeletable; }
+    public void setDescription(String description) { this.description = description; }
 
 }

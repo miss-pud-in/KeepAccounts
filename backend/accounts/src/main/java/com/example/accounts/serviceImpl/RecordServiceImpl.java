@@ -41,18 +41,8 @@ public class RecordServiceImpl implements RecordService {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(recordBean.getDate());
         String bookName = calendar.get(Calendar.YEAR) + "年" + calendar.get(Calendar.MONTH) + "月的账本";
-        BookBean bookBean = new BookBean();
-        boolean found = false;
-        List<BookUserBean> bookUserBeanList = bookUserService.getByOwnerId(recordBean.getUserId());
-        int size = bookUserBeanList.size();
-        for (int i = 0; i < size; i++) {      //在用户现有的账本中查找月账本
-            bookBean = bookService.getBookById(bookUserBeanList.get(i).getBookId());
-            if (bookBean.getName().equals(bookName)) {
-                found = true;
-                break;
-            }
-        }
-        if (!found) {    //若未找到对应账本，则添加新的账本
+        BookBean bookBean = bookService.ifBookExists(recordBean.getUserId(), bookName);  //查找是否有对应的月账本
+        if (bookBean == null) {    //若未找到，则添加新的月账本
             bookBean = new BookBean();
             bookBean.setName(bookName);
             bookBean.setIsPrivate(1);

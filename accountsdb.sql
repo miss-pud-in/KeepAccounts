@@ -11,7 +11,7 @@
  Target Server Version : 50729
  File Encoding         : 65001
 
- Date: 13/04/2021 13:51:36
+ Date: 13/04/2021 19:43:56
 */
 
 SET NAMES utf8mb4;
@@ -28,19 +28,20 @@ CREATE TABLE `book`  (
   `is_deletable` int(10) NOT NULL COMMENT '是否可删除，值为0表示不可删除，为默认账本',
   `is_lock` int(10) NOT NULL COMMENT '是否加密，值为1表示加密，需要password',
   `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '密码',
+  `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 100008 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of book
 -- ----------------------------
-INSERT INTO `book` VALUES (100001, '2021年3月的账本', 1, 0, 0, '');
-INSERT INTO `book` VALUES (100002, '2021年3月的账本', 1, 0, 1, '123456');
-INSERT INTO `book` VALUES (100003, '2021年3月的账本', 1, 0, 1, '7777777');
-INSERT INTO `book` VALUES (100004, '2021年3月的账本', 1, 0, 0, NULL);
-INSERT INTO `book` VALUES (100005, '2021年3月的账本', 1, 0, 0, NULL);
-INSERT INTO `book` VALUES (100006, '今天又逛tb了吗', 0, 1, 1, 'tay');
-INSERT INTO `book` VALUES (100007, '121年3月的账本', 1, 0, 0, NULL);
+INSERT INTO `book` VALUES (100001, '2021年3月的账本', 1, 0, 0, '', NULL);
+INSERT INTO `book` VALUES (100002, '2021年3月的账本', 1, 0, 1, '123456', NULL);
+INSERT INTO `book` VALUES (100003, '2021年3月的账本', 1, 0, 1, '7777777', NULL);
+INSERT INTO `book` VALUES (100004, '2021年3月的账本', 1, 0, 0, NULL, NULL);
+INSERT INTO `book` VALUES (100005, '2021年3月的账本', 1, 0, 0, NULL, NULL);
+INSERT INTO `book` VALUES (100006, '今天又逛tb了吗', 0, 1, 1, 'tay', NULL);
+INSERT INTO `book` VALUES (100007, '121年3月的账本', 1, 0, 0, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for book_record
@@ -60,6 +61,7 @@ CREATE TABLE `book_record`  (
 -- ----------------------------
 INSERT INTO `book_record` VALUES (100007, 1);
 INSERT INTO `book_record` VALUES (100003, 2);
+INSERT INTO `book_record` VALUES (100003, 3);
 
 -- ----------------------------
 -- Table structure for book_user
@@ -137,13 +139,14 @@ CREATE TABLE `record`  (
   `label_id` int(11) NOT NULL COMMENT '所属标签的id',
   `remarks` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of record
 -- ----------------------------
 INSERT INTO `record` VALUES (1, 100003, 100, '2021-04-12', 3, NULL);
 INSERT INTO `record` VALUES (2, 100003, 300, '2021-04-12', 3, NULL);
+INSERT INTO `record` VALUES (3, 100003, -20.7, '2021-04-13', 3, NULL);
 
 -- ----------------------------
 -- Table structure for user

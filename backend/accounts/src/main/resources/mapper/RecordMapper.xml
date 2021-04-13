@@ -6,11 +6,11 @@
     </select>
     <insert id="insert" parameterType="com.example.accounts.bean.RecordBean"
             useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        INSERT INTO record(id, amount, date, label_id, remarks)
-         VALUES (#{id}, #{amount}, #{date}, #{label_id}, #{remarks})
+        INSERT INTO record(id, user_id, amount, date, label_id, remarks)
+         VALUES (#{id}, #{userId}, #{amount}, #{date}, #{labelId}, #{remarks})
     </insert>
     <update id="update" parameterType="com.example.accounts.bean.RecordBean">
-        UPDATE record set amount = #{amount}, date = #{date}, label_id = #{labelId}, remarks = #{remarks} where id = #{id}
+        UPDATE record set user_id = #{userId}, amount = #{amount}, date = #{date}, label_id = #{labelId}, remarks = #{remarks} where id = #{id}
     </update>
     <delete id="delete" parameterType="int">
         DELETE FROM record WHERE id = #{id}

@@ -6,6 +6,8 @@ import com.example.accounts.service.LabelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LabelServiceImpl implements LabelService {
 
@@ -13,11 +15,27 @@ public class LabelServiceImpl implements LabelService {
     private LabelMapper labelMapper;
 
     @Override
-    public void addNewLabel(int userId, String name) {
-        LabelBean labelBean = new LabelBean();
-        labelBean.setUserId(userId);
-        labelBean.setName(name);
-        labelMapper.insert(labelBean);
+    public List<LabelBean> getByUserId(int userId) {
+        return labelMapper.getByUserId(userId);
+    }
+
+    @Override
+    public boolean addNewLabel(LabelBean labelBean) {
+        if (!ifLabelExists(labelBean)) {
+            labelMapper.insert(labelBean);
+            return true;
+        }
+        else
+            return false;
+    }
+
+    @Override
+    public boolean ifLabelExists(LabelBean labelBean) {
+        LabelBean bean = labelMapper.getByUserAndName(labelBean);
+        if (bean != null)
+            return true;
+        else
+            return false;
     }
 
 }

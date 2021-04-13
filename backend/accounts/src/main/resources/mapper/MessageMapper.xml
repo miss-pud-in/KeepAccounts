@@ -6,10 +6,10 @@
     </select>
     <insert id="insert" parameterType="com.example.accounts.bean.MessageBean"
             useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        INSERT INTO message(id, from, to, type) VALUES (#{id}, #{from}, #{to}, #{type})
+        INSERT INTO message(id, from_id, to_id, type) VALUES (#{id}, #{fromId}, #{toId}, #{type})
     </insert>
     <update id="update" parameterType="com.example.accounts.bean.MessageBean">
-        UPDATE message set from = #{from}, to = #{to}, type = #{type} where id = #{id}
+        UPDATE message set from_id = #{fromId}, to_id = #{toId}, type = #{type} where id = #{id}
     </update>
     <delete id="delete" parameterType="int">
         DELETE FROM message WHERE id = #{id}

@@ -6,11 +6,13 @@
     </select>
     <insert id="insert" parameterType="com.example.accounts.bean.BookBean"
             useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        INSERT INTO book(id, name, is_private, is_deletable, is_lock, password)
-         VALUES (#{id}, #{name}, #{isPrivate}, #{isDeletable}, #{isLock}, #{password})
+        INSERT INTO book(id, name, is_private, is_deletable, is_lock, password, description)
+         VALUES (#{id}, #{name}, #{isPrivate}, #{isDeletable}, #{isLock}, #{password}, #{description})
     </insert>
     <update id="update" parameterType="com.example.accounts.bean.BookBean">
-        UPDATE book set name = #{name}, is_private = #{isPrivate}, is_deletable = #{isDeletable}, is_lock = #{isLock}, password = #{password} where id = #{id}
+        UPDATE book set name = #{name}, is_private = #{isPrivate}, is_deletable = #{isDeletable},
+                        is_lock = #{isLock}, password = #{password}, description = #{description}
+        where id = #{id}
     </update>
     <delete id="delete" parameterType="int">
         DELETE FROM book WHERE id = #{id}

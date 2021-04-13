@@ -111,7 +111,7 @@ import Qs from 'qs';
       				}
 					that.axios({
         				method: 'post',
-        				url: '/api/user/loginIn/',
+        				url: '/api/loginIn/',
         				data: Qs.stringify(mydata)
       				})
 					.then( res => {
@@ -143,7 +143,7 @@ import Qs from 'qs';
       				}
 					that.axios({
         				method: 'post',
-        				url: '/api/user/register/',
+        				url: '/api/register/',
         				data: Qs.stringify(mydata)
       				})
 					.then( res => {

@@ -9,7 +9,7 @@
     <a href="#" @click="changeToBooking">
       <div class="left"  > 
         <div class="button _1"> 
-          <span>记账中心</span>
+          <h1>记 账 中 心</h1>
           <div class="back"></div>
         </div>
       </div>
@@ -17,7 +17,7 @@
     <a href="#" @click="changeToBills">
       <div class="right" >
         <div class="button _2"> 
-          <span>记账中心</span>
+          <h1>账 本 中 心</h1>
           <div class="back"></div>
         </div>
       </div>  
@@ -25,7 +25,7 @@
     <a href="#" @click="changeToSharing">
       <div class="left2">
         <div class="button _3"> 
-          <span>记账中心</span>
+          <h1>分 享 中 心</h1>
           <div class="back"></div>
         </div>
       </div>    
@@ -33,14 +33,17 @@
     <a href="#" @click="changeToReporting">
       <div class="right2" >
         <div class="button _4"> 
-          <span>记账中心</span>
+          <h1>收 支 报 告</h1>
           <div class="back"></div>
         </div>
       </div>
     </a>
       <a href="#" @click="changeToPersonal">
       <div class="center" >
+        <div class="button2 _2" > 
+          <h1>个人中心</h1>
 
+        </div>
       </div>
     </a>
   </div>
@@ -109,7 +112,7 @@ export default{
     box-shadow: -2px 2px 8px rgba(143, 135, 135, 0.1)
 }
 .right2{
-    background: #e7e6e4;
+    background: #d3ebec;
     width: 500px;
     height: 300px;
     position: absolute;
@@ -127,13 +130,7 @@ export default{
     border-radius:150px;
     z-index: 10;
 }
-.centerButton{
-  position: relative;
-  left:150px;
-  width:200px;
-  height: 130px;
-  top:100px;
-}
+
 :root {
   --height: 100px;
   --width: 200px;
@@ -148,12 +145,32 @@ export default{
   align-items: center;
   cursor: pointer;
   overflow: hidden;
-  
   transition: all 0.3s cubic-bezier(0, 0.22, 0.3, 1);
+  
 }
 
-.button span {
+.button2 {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0, 0.22, 0.3, 1);
+  
+}
+
+.button h1 {
   z-index: 10;
+  color: white;
+
+}
+.center h1 {
+  z-index: 10;
+  color: white;
+  text-align: center;
 }
 
 .button .back {
@@ -168,28 +185,27 @@ export default{
 .button._1 .back {
   left: -50%;
   top: -50%;
-  background: #27ae60;
+  background: #bdd2b6;
 }
 .button._2 .back {
   right: -50%;
   top: -50%;
-  background: #c0392b;
+  background: #ffe5a7;
 }
 .button._3 .back {
   left: -50%;
   bottom: -50%;
-  background: #34495e;
+  background: #FFD3B4;
 }
 .button._4 .back { 
   right: -50%;
   bottom: -50%;
-  background: #2980b9;
+  background: #8FD6E1;
 }
 .button:hover .back {
   width: 1000px;
   height: 600px;
 }
-
 
 
 

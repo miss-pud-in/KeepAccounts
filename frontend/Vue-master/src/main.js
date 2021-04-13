@@ -11,6 +11,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 import Axios from 'axios'
 import VueAxios from 'vue-axios'
 import Qs from 'qs'
+import vuescroll from "vuescroll";//引入vuescroll
+import "vuescroll/dist/vuescroll.css";//引入vuescroll样式
+Vue.use(vuescroll);//使用
 
 Vue.use(VueAxios, Axios);
 Vue.use(Qs);

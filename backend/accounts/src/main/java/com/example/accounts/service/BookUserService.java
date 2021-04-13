@@ -1,9 +1,13 @@
 package com.example.accounts.service;
 
+import com.example.accounts.bean.BookBean;
 import com.example.accounts.bean.BookUserBean;
+
+import java.util.List;
 
 public interface BookUserService {
 
-    void addNewRelation(int bookId, int userId, boolean isOwner);
+    List<BookUserBean> getByOwnerId(int userId);
+    void addNewRelation(BookUserBean bookUserBean);
 
 }

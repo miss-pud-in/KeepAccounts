@@ -1,5 +1,7 @@
 package com.example.accounts.serviceImpl;
 
+import com.example.accounts.bean.BookBean;
+import com.example.accounts.bean.LabelBean;
 import com.example.accounts.bean.UserBean;
 import com.example.accounts.mapper.UserMapper;
 import com.example.accounts.service.BookService;
@@ -7,6 +9,8 @@ import com.example.accounts.service.LabelService;
 import com.example.accounts.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Calendar;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -46,9 +50,14 @@ public class UserServiceImpl implements UserService {
             userBean.setPassword(password);
             userMapper.insert(userBean);
             /* 为新用户添加当月账本 */
-            bookService.addNewBook(userBean.getId(), null, true);
+            Calendar calendar = Calendar.getInstance();
+            BookBean bookBean = new BookBean();
+            bookBean.setName(calendar.get(Calendar.YEAR) + "年" + calendar.get(Calendar.MONTH) + "月的账本");
+            bookBean.setIsPrivate(1);
+            bookService.addNewBook(userBean.getId(), bookBean);
             /* 为新用户添加默认标签 */
-            labelService.addNewLabel(userBean.getId(), "无");
+            LabelBean labelBean = new LabelBean(userBean.getId(), "无", 0);
+            labelService.addNewLabel(labelBean);
             return "1";  // 注册成功
         }
     }

@@ -7,6 +7,13 @@ public class LabelBean {
     private String name;
     private int isFavorite = 0;
 
+    public LabelBean() {}
+    public LabelBean(int userId, String name, int isFavorite) {
+        this.userId = userId;
+        this.name = name;
+        this.isFavorite = isFavorite;
+    }
+
     public int getId() {
         return id;
     }

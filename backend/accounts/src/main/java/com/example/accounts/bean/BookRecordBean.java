@@ -5,6 +5,12 @@ public class BookRecordBean {
     private int bookId;
     private int recordId;
 
+    public BookRecordBean() {}
+    public BookRecordBean(int bookId, int recordId) {
+        this.bookId = bookId;
+        this.recordId = recordId;
+    }
+
     public int getBookId() { return bookId; }
     public int getRecordId() {
         return recordId;

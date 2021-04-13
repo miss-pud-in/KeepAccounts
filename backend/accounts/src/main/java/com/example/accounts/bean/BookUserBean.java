@@ -6,6 +6,14 @@ public class BookUserBean {
     private int userId;
     private int isOwner = 0;
 
+    public BookUserBean() {}
+    public BookUserBean(int bookId, int userId, int isOwner) {
+        this.bookId = bookId;
+        this.userId = userId;
+        if (isOwner == 0 || isOwner == 1)
+            this.isOwner = isOwner;
+    }
+
     public int getBookId() {
         return bookId;
     }

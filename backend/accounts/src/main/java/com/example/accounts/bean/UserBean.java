@@ -8,6 +8,13 @@ public class UserBean {
     private String password;
     private int budgetForMonth = 0;
 
+    public UserBean() {}
+    public UserBean(String name, String password, int budgetForMonth) {
+        this.name = name;
+        this.password = password;
+        this.budgetForMonth = budgetForMonth;
+    }
+
     public int getId() {
         return id;
     }

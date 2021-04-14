@@ -20,13 +20,18 @@ public class LabelServiceImpl implements LabelService {
     }
 
     @Override
-    public boolean addNewLabel(LabelBean labelBean) {
+    public LabelBean getByUserAndName(LabelBean labelBean) {
+        return labelMapper.getByUserAndName(labelBean);
+    }
+
+    @Override
+    public LabelBean addNewLabel(LabelBean labelBean) {
         if (!ifLabelExists(labelBean)) {
             labelMapper.insert(labelBean);
-            return true;
+            return labelBean;
         }
         else
-            return false;
+            return null;
     }
 
     @Override

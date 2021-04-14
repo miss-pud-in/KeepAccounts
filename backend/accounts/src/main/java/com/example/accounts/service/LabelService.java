@@ -7,7 +7,8 @@ import java.util.List;
 public interface LabelService {
 
     List<LabelBean> getByUserId(int userId);
-    boolean addNewLabel(LabelBean labelBean);
+    LabelBean getByUserAndName(LabelBean labelBean);
+    LabelBean addNewLabel(LabelBean labelBean);
     boolean ifLabelExists(LabelBean labelBean);
 
 }

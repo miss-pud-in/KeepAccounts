@@ -28,11 +28,24 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookBean> getByUserId(int userId) {
+    public List<BookBean> getByOwnerId(int userId) {
         List<BookUserBean> bookUserBeanList = bookUserService.getByOwnerId(userId);
         List<BookBean> bookBeanList = new ArrayList<BookBean>();
         for (BookUserBean bean : bookUserBeanList) {
             bookBeanList.add(bookMapper.getById(bean.getBookId()));
+        }
+        return bookBeanList;
+    }
+
+    @Override
+    public List<BookBean> getByOwnerIdWithoutMonthlyBook(int userId) {
+        List<BookUserBean> bookUserBeanList = bookUserService.getByOwnerId(userId);
+        List<BookBean> bookBeanList = new ArrayList<BookBean>();
+        BookBean bookBean;
+        for (BookUserBean bean : bookUserBeanList) {
+            bookBean = bookMapper.getById(bean.getBookId());
+            if (bookBean.getIsMonthly() != 1)
+                bookBeanList.add(bookBean);
         }
         return bookBeanList;
     }
@@ -51,7 +64,7 @@ public class BookServiceImpl implements BookService {
     public BookBean ifBookExists(int userId, String name) {
         BookBean bookBean;
         List<BookUserBean> bookUserBeanList = bookUserService.getByOwnerId(userId);
-        for (BookUserBean bean : bookUserBeanList) {      //在用户现有的账本中查找月账本
+        for (BookUserBean bean : bookUserBeanList) {      //在用户现有的账本中查找账本
             bookBean = bookService.getBookById(bean.getBookId());
             if (bookBean.getName().equals(name)) {
                 return bookBean;

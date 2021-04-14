@@ -7,7 +7,7 @@ public class BookBean {
     private int isPrivate = 0;
     private int isLock = 0;
     private String password;
-    private int isDeletable = 0;
+    private int isMonthly = 0;
     private String description;
 
     public int getId() {
@@ -25,7 +25,7 @@ public class BookBean {
     public String getPassword() {
         return password;
     }
-    public int getIsDeletable() { return isDeletable; }
+    public int getIsMonthly() { return isMonthly; }
     public String getDescription() { return description; }
 
     public void setName(String name) {
@@ -40,7 +40,7 @@ public class BookBean {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setIsDeletable(int isDeletable) { this.isDeletable = isDeletable; }
+    public void setIsMonthly(int isMonthly) { this.isMonthly = isMonthly; }
     public void setDescription(String description) { this.description = description; }
 
 }

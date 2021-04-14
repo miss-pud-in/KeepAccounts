@@ -40,7 +40,7 @@ public class RecordServiceImpl implements RecordService {
         /* 将账单记录添加至对应的月账本中 */
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(recordBean.getDate());
-        String bookName = calendar.get(Calendar.YEAR) + "年" + calendar.get(Calendar.MONTH) + "月的账本";
+        String bookName = calendar.get(Calendar.YEAR) + "年" + (calendar.get(Calendar.MONTH) + 1) + "月的账本";
         BookBean bookBean = bookService.ifBookExists(recordBean.getUserId(), bookName);  //查找是否有对应的月账本
         if (bookBean == null) {    //若未找到，则添加新的月账本
             bookBean = new BookBean();

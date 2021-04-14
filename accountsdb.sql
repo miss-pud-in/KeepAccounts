@@ -11,7 +11,7 @@
  Target Server Version : 50729
  File Encoding         : 65001
 
- Date: 13/04/2021 19:43:56
+ Date: 14/04/2021 13:43:17
 */
 
 SET NAMES utf8mb4;
@@ -25,23 +25,25 @@ CREATE TABLE `book`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `is_private` int(10) NOT NULL COMMENT '是否为私有账本，值为1时表示私有账本',
-  `is_deletable` int(10) NOT NULL COMMENT '是否可删除，值为0表示不可删除，为默认账本',
+  `is_monthly` int(10) NOT NULL COMMENT '是否为月账本，值为1表示为月账本，是默认账本',
   `is_lock` int(10) NOT NULL COMMENT '是否加密，值为1表示加密，需要password',
   `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '密码',
   `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100008 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 100010 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of book
 -- ----------------------------
-INSERT INTO `book` VALUES (100001, '2021年3月的账本', 1, 0, 0, '', NULL);
-INSERT INTO `book` VALUES (100002, '2021年3月的账本', 1, 0, 1, '123456', NULL);
-INSERT INTO `book` VALUES (100003, '2021年3月的账本', 1, 0, 1, '7777777', NULL);
-INSERT INTO `book` VALUES (100004, '2021年3月的账本', 1, 0, 0, NULL, NULL);
-INSERT INTO `book` VALUES (100005, '2021年3月的账本', 1, 0, 0, NULL, NULL);
-INSERT INTO `book` VALUES (100006, '今天又逛tb了吗', 0, 1, 1, 'tay', NULL);
-INSERT INTO `book` VALUES (100007, '121年3月的账本', 1, 0, 0, NULL, NULL);
+INSERT INTO `book` VALUES (100001, '2021年3月的账本', 1, 1, 0, '', NULL);
+INSERT INTO `book` VALUES (100002, '2021年3月的账本', 1, 1, 1, '123456', NULL);
+INSERT INTO `book` VALUES (100003, '2021年3月的账本', 1, 1, 1, '7777777', NULL);
+INSERT INTO `book` VALUES (100004, '2021年3月的账本', 1, 1, 0, NULL, NULL);
+INSERT INTO `book` VALUES (100005, '2021年3月的账本', 1, 1, 0, NULL, NULL);
+INSERT INTO `book` VALUES (100006, '今天又逛tb了吗', 0, 0, 1, 'tay', NULL);
+INSERT INTO `book` VALUES (100007, '121年3月的账本', 1, 1, 0, NULL, NULL);
+INSERT INTO `book` VALUES (100008, '2021年4月的账本', 1, 0, 0, NULL, NULL);
+INSERT INTO `book` VALUES (100009, '2021年4月的账本', 1, 0, 0, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for book_record
@@ -62,6 +64,9 @@ CREATE TABLE `book_record`  (
 INSERT INTO `book_record` VALUES (100007, 1);
 INSERT INTO `book_record` VALUES (100003, 2);
 INSERT INTO `book_record` VALUES (100003, 3);
+INSERT INTO `book_record` VALUES (100003, 4);
+INSERT INTO `book_record` VALUES (100008, 5);
+INSERT INTO `book_record` VALUES (100009, 6);
 
 -- ----------------------------
 -- Table structure for book_user
@@ -87,6 +92,8 @@ INSERT INTO `book_user` VALUES (100004, 100004, 1);
 INSERT INTO `book_user` VALUES (100005, 100006, 1);
 INSERT INTO `book_user` VALUES (100006, 100003, 1);
 INSERT INTO `book_user` VALUES (100007, 100003, 1);
+INSERT INTO `book_user` VALUES (100008, 100003, 1);
+INSERT INTO `book_user` VALUES (100009, 100002, 1);
 
 -- ----------------------------
 -- Table structure for label
@@ -135,18 +142,22 @@ CREATE TABLE `record`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `amount` double NOT NULL,
+  `is_income` int(11) NOT NULL COMMENT '是否为收入，0表示支出，1表示收入',
   `date` date NOT NULL,
   `label_id` int(11) NOT NULL COMMENT '所属标签的id',
   `remarks` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of record
 -- ----------------------------
-INSERT INTO `record` VALUES (1, 100003, 100, '2021-04-12', 3, NULL);
-INSERT INTO `record` VALUES (2, 100003, 300, '2021-04-12', 3, NULL);
-INSERT INTO `record` VALUES (3, 100003, -20.7, '2021-04-13', 3, NULL);
+INSERT INTO `record` VALUES (1, 100003, 100, 0, '2021-04-12', 3, NULL);
+INSERT INTO `record` VALUES (2, 100003, 300, 1, '2021-04-12', 3, NULL);
+INSERT INTO `record` VALUES (3, 100003, 20.7, 0, '2021-04-13', 3, NULL);
+INSERT INTO `record` VALUES (4, 100003, 26.7, 0, '2021-04-14', 3, NULL);
+INSERT INTO `record` VALUES (5, 100003, 66.1, 0, '2021-04-14', 3, NULL);
+INSERT INTO `record` VALUES (6, 100002, 210.5, 0, '2021-04-14', 2, NULL);
 
 -- ----------------------------
 -- Table structure for user

@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.accounts.mapper.BookMapper">
     <select id="getById" parameterType="int" resultType="com.example.accounts.bean.BookBean">
-        SELECT * FROM book WHERE id = #{id}
+        SELECT id id, name name, is_private isPrivate, is_monthly isMonthly, is_lock isLock, password password, description description
+         FROM book WHERE id = #{id}
     </select>
     <insert id="insert" parameterType="com.example.accounts.bean.BookBean"
             useGeneratedKeys="true" keyProperty="id" keyColumn="id">
